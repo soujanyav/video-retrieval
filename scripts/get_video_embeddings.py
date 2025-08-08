@@ -12,13 +12,15 @@ from vertexai.vision_models import MultiModalEmbeddingModel, Video
 from vertexai.vision_models import VideoSegmentConfig
 
 # TODO(developer): Update & uncomment line below
-PROJECT_ID = "my-vertexai-project-id"
+PROJECT_ID = "your-vertexai-project-id"
 # Set the environment variable within the script
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/soujanyalanka/github/video-RAG/my-vertexai-project-id-4f210b8cc8e7.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "your-service-account.json"
 
 vertexai.init(project=PROJECT_ID, location="us-central1")
+
+## File that contains the gs uri for the videos that need to be indexed
+## The videos need to be chunked to a length of 2 mins
 video_list_filename = "video-list-for-index.txt"
-bucket_url = "" #"gs://barc_videos/chunk_videos/"
 model = MultiModalEmbeddingModel.from_pretrained("multimodalembedding@001")
 
 index_jsonl_file = "video_embeddings.jsonl"
